@@ -7,23 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00106F0E27E7E026005BE10A /* PosterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F0D27E7E025005BE10A /* PosterCollectionViewCellViewModel.swift */; };
+		00106F1027E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F0F27E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift */; };
+		00106F1227E7E12F005BE10A /* PostTitleCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1127E7E12F005BE10A /* PostTitleCollectionViewCellViewModel.swift */; };
+		00106F1427E7E143005BE10A /* PostAuthorCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1327E7E143005BE10A /* PostAuthorCollectionViewCellViewModel.swift */; };
+		00106F1627E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1527E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift */; };
+		00106F1827E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1727E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift */; };
+		00106F1A27E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1927E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift */; };
+		00106F1C27E7E323005BE10A /* HomeFeedCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1B27E7E323005BE10A /* HomeFeedCellType.swift */; };
+		00106F1F27E8007B005BE10A /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F1E27E8007B005BE10A /* PosterCollectionViewCell.swift */; };
+		00106F2127E80145005BE10A /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2027E80145005BE10A /* PostCollectionViewCell.swift */; };
+		00106F2327E80159005BE10A /* PostTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2227E80159005BE10A /* PostTitleCollectionViewCell.swift */; };
+		00106F2527E80175005BE10A /* PostAuthorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2427E80175005BE10A /* PostAuthorCollectionViewCell.swift */; };
+		00106F2727E8018A005BE10A /* PostISBNCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2627E8018A005BE10A /* PostISBNCollectionViewCell.swift */; };
+		00106F2927E801A2005BE10A /* PostClassCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2827E801A2005BE10A /* PostClassCollectionViewCell.swift */; };
+		00106F2B27E801B8005BE10A /* PostSubjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2A27E801B8005BE10A /* PostSubjectCollectionViewCell.swift */; };
+		00106F2D27E8229F005BE10A /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2C27E8229F005BE10A /* PostEditorViewController.swift */; };
+		00106F2F27E82418005BE10A /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106F2E27E82418005BE10A /* PhotoCollectionViewCell.swift */; };
 		0068E0A427E2E804002307B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0A327E2E804002307B3 /* AppDelegate.swift */; };
 		0068E0A627E2E804002307B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0A527E2E804002307B3 /* SceneDelegate.swift */; };
-		0068E0A827E2E804002307B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0A727E2E804002307B3 /* ViewController.swift */; };
-		0068E0AB27E2E804002307B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0068E0A927E2E804002307B3 /* Main.storyboard */; };
+		0068E0A827E2E804002307B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0A727E2E804002307B3 /* HomeViewController.swift */; };
 		0068E0AD27E2E807002307B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0068E0AC27E2E807002307B3 /* Assets.xcassets */; };
 		0068E0B027E2E807002307B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0068E0AE27E2E807002307B3 /* LaunchScreen.storyboard */; };
+		0068E0BF27E2EABE002307B3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0BE27E2EABE002307B3 /* CameraViewController.swift */; };
+		0068E0C127E2EAD2002307B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0C027E2EAD2002307B3 /* ProfileViewController.swift */; };
+		0068E0C427E2EAF7002307B3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0C327E2EAF7002307B3 /* TabBarViewController.swift */; };
+		0068E0C627E2EB11002307B3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0C527E2EB11002307B3 /* SignInViewController.swift */; };
+		0068E0C827E2EB2C002307B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0C727E2EB2C002307B3 /* SignUpViewController.swift */; };
+		0068E0CA27E2EB7C002307B3 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0C927E2EB7C002307B3 /* CaptionViewController.swift */; };
+		0068E0CC27E2EB94002307B3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0CB27E2EB94002307B3 /* PostViewController.swift */; };
+		0068E0CE27E2EBA8002307B3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0CD27E2EBA8002307B3 /* SettingsViewController.swift */; };
+		0068E0D027E2EBC8002307B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0CF27E2EBC8002307B3 /* User.swift */; };
+		0068E0D227E2EBD4002307B3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0D127E2EBD4002307B3 /* Post.swift */; };
+		0068E0D427E2EBFC002307B3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0D327E2EBFC002307B3 /* AuthManager.swift */; };
+		0068E0D627E2EC0D002307B3 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0D527E2EC0D002307B3 /* DatabaseManager.swift */; };
+		0068E0D827E2EC19002307B3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0D727E2EC19002307B3 /* StorageManager.swift */; };
+		0068E0DA27E2EC29002307B3 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0D927E2EC29002307B3 /* AnalyticsManager.swift */; };
+		0068E0DC27E2EC37002307B3 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0DB27E2EC37002307B3 /* HapticsManager.swift */; };
+		0068E0DE27E2F140002307B3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0068E0DD27E2F140002307B3 /* GoogleService-Info.plist */; };
+		0068E0E027E43017002307B3 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0DF27E43016002307B3 /* SignInHeaderView.swift */; };
+		0068E0E227E4317A002307B3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E127E4317A002307B3 /* Extensions.swift */; };
+		0068E0E427E43723002307B3 /* BATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E327E43723002307B3 /* BATextField.swift */; };
+		0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E527E43DD6002307B3 /* TermsViewController.swift */; };
+		0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */; };
+		8D13F57E214CDA7CAE880338 /* Pods_BookSwap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00106F0D27E7E025005BE10A /* PosterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F0F27E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1127E7E12F005BE10A /* PostTitleCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1327E7E143005BE10A /* PostAuthorCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthorCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1527E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostISBNCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1727E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostClassCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1927E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubjectCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		00106F1B27E7E323005BE10A /* HomeFeedCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCellType.swift; sourceTree = "<group>"; };
+		00106F1E27E8007B005BE10A /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2027E80145005BE10A /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2227E80159005BE10A /* PostTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2427E80175005BE10A /* PostAuthorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthorCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2627E8018A005BE10A /* PostISBNCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostISBNCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2827E801A2005BE10A /* PostClassCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostClassCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2A27E801B8005BE10A /* PostSubjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		00106F2C27E8229F005BE10A /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
+		00106F2E27E82418005BE10A /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0068E0A027E2E804002307B3 /* BookSwap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSwap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0068E0A327E2E804002307B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0068E0A527E2E804002307B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0068E0A727E2E804002307B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0068E0AA27E2E804002307B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0068E0A727E2E804002307B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0068E0AC27E2E807002307B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0068E0AF27E2E807002307B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0068E0B127E2E807002307B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0068E0BE27E2EABE002307B3 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		0068E0C027E2EAD2002307B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0068E0C327E2EAF7002307B3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0068E0C527E2EB11002307B3 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0068E0C727E2EB2C002307B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0068E0C927E2EB7C002307B3 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
+		0068E0CB27E2EB94002307B3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		0068E0CD27E2EBA8002307B3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0068E0CF27E2EBC8002307B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0068E0D127E2EBD4002307B3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0068E0D327E2EBFC002307B3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0068E0D527E2EC0D002307B3 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0068E0D727E2EC19002307B3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		0068E0D927E2EC29002307B3 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		0068E0DB27E2EC37002307B3 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		0068E0DD27E2F140002307B3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0068E0DF27E43016002307B3 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
+		0068E0E127E4317A002307B3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0068E0E327E43723002307B3 /* BATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BATextField.swift; sourceTree = "<group>"; };
+		0068E0E527E43DD6002307B3 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		5125227CF41B90392A4BFE39 /* Pods-BookSwap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.release.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.release.xcconfig"; sourceTree = "<group>"; };
+		5D7ACAEC31E5D1AFB05E99B1 /* Pods-BookSwap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.debug.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.debug.xcconfig"; sourceTree = "<group>"; };
+		FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookSwap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +109,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D13F57E214CDA7CAE880338 /* Pods_BookSwap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00106F1D27E8004E005BE10A /* Home Cells */ = {
+			isa = PBXGroup;
+			children = (
+				00106F1E27E8007B005BE10A /* PosterCollectionViewCell.swift */,
+				00106F2027E80145005BE10A /* PostCollectionViewCell.swift */,
+				00106F2227E80159005BE10A /* PostTitleCollectionViewCell.swift */,
+				00106F2427E80175005BE10A /* PostAuthorCollectionViewCell.swift */,
+				00106F2627E8018A005BE10A /* PostISBNCollectionViewCell.swift */,
+				00106F2827E801A2005BE10A /* PostClassCollectionViewCell.swift */,
+				00106F2A27E801B8005BE10A /* PostSubjectCollectionViewCell.swift */,
+			);
+			path = "Home Cells";
+			sourceTree = "<group>";
+		};
 		0068E09727E2E804002307B3 = {
 			isa = PBXGroup;
 			children = (
 				0068E0A227E2E804002307B3 /* BookSwap */,
 				0068E0A127E2E804002307B3 /* Products */,
+				5C639FA09F4914F29802AC12 /* Pods */,
+				C835810FA87DB69C43FAB6F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +151,127 @@
 		0068E0A227E2E804002307B3 /* BookSwap */ = {
 			isa = PBXGroup;
 			children = (
-				0068E0A327E2E804002307B3 /* AppDelegate.swift */,
-				0068E0A527E2E804002307B3 /* SceneDelegate.swift */,
-				0068E0A727E2E804002307B3 /* ViewController.swift */,
-				0068E0A927E2E804002307B3 /* Main.storyboard */,
-				0068E0AC27E2E807002307B3 /* Assets.xcassets */,
-				0068E0AE27E2E807002307B3 /* LaunchScreen.storyboard */,
+				0068E0BC27E2E945002307B3 /* Resources */,
+				0068E0BB27E2E934002307B3 /* Managers */,
+				0068E0BA27E2E92C002307B3 /* ViewModels */,
+				0068E0B927E2E926002307B3 /* Models */,
+				0068E0B827E2E915002307B3 /* Views */,
+				0068E0B727E2E906002307B3 /* Controllers */,
 				0068E0B127E2E807002307B3 /* Info.plist */,
 			);
 			path = BookSwap;
+			sourceTree = "<group>";
+		};
+		0068E0B727E2E906002307B3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0C227E2EAD7002307B3 /* Other */,
+				0068E0BD27E2EA9E002307B3 /* Core */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0068E0B827E2E915002307B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00106F1D27E8004E005BE10A /* Home Cells */,
+				0068E0AE27E2E807002307B3 /* LaunchScreen.storyboard */,
+				0068E0DF27E43016002307B3 /* SignInHeaderView.swift */,
+				0068E0E327E43723002307B3 /* BATextField.swift */,
+				00106F2E27E82418005BE10A /* PhotoCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0068E0B927E2E926002307B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0CF27E2EBC8002307B3 /* User.swift */,
+				0068E0D127E2EBD4002307B3 /* Post.swift */,
+				00106F1B27E7E323005BE10A /* HomeFeedCellType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0068E0BA27E2E92C002307B3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				00106F0D27E7E025005BE10A /* PosterCollectionViewCellViewModel.swift */,
+				00106F0F27E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift */,
+				00106F1127E7E12F005BE10A /* PostTitleCollectionViewCellViewModel.swift */,
+				00106F1327E7E143005BE10A /* PostAuthorCollectionViewCellViewModel.swift */,
+				00106F1527E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift */,
+				00106F1727E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift */,
+				00106F1927E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0068E0BB27E2E934002307B3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0D327E2EBFC002307B3 /* AuthManager.swift */,
+				0068E0D527E2EC0D002307B3 /* DatabaseManager.swift */,
+				0068E0D727E2EC19002307B3 /* StorageManager.swift */,
+				0068E0D927E2EC29002307B3 /* AnalyticsManager.swift */,
+				0068E0DB27E2EC37002307B3 /* HapticsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0068E0BC27E2E945002307B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0DD27E2F140002307B3 /* GoogleService-Info.plist */,
+				0068E0AC27E2E807002307B3 /* Assets.xcassets */,
+				0068E0A327E2E804002307B3 /* AppDelegate.swift */,
+				0068E0A527E2E804002307B3 /* SceneDelegate.swift */,
+				0068E0E127E4317A002307B3 /* Extensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0068E0BD27E2EA9E002307B3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0A727E2E804002307B3 /* HomeViewController.swift */,
+				0068E0BE27E2EABE002307B3 /* CameraViewController.swift */,
+				0068E0C027E2EAD2002307B3 /* ProfileViewController.swift */,
+				0068E0C327E2EAF7002307B3 /* TabBarViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0068E0C227E2EAD7002307B3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				0068E0C527E2EB11002307B3 /* SignInViewController.swift */,
+				0068E0C727E2EB2C002307B3 /* SignUpViewController.swift */,
+				0068E0C927E2EB7C002307B3 /* CaptionViewController.swift */,
+				0068E0CB27E2EB94002307B3 /* PostViewController.swift */,
+				0068E0CD27E2EBA8002307B3 /* SettingsViewController.swift */,
+				0068E0E527E43DD6002307B3 /* TermsViewController.swift */,
+				0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */,
+				00106F2C27E8229F005BE10A /* PostEditorViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		5C639FA09F4914F29802AC12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D7ACAEC31E5D1AFB05E99B1 /* Pods-BookSwap.debug.xcconfig */,
+				5125227CF41B90392A4BFE39 /* Pods-BookSwap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C835810FA87DB69C43FAB6F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +281,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0068E0B427E2E807002307B3 /* Build configuration list for PBXNativeTarget "BookSwap" */;
 			buildPhases = (
+				4333D8516DE390E6EA8D60B0 /* [CP] Check Pods Manifest.lock */,
 				0068E09C27E2E804002307B3 /* Sources */,
 				0068E09D27E2E804002307B3 /* Frameworks */,
 				0068E09E27E2E804002307B3 /* Resources */,
+				C2C6E0F185D4B76D1D56F990 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +336,105 @@
 			files = (
 				0068E0B027E2E807002307B3 /* LaunchScreen.storyboard in Resources */,
 				0068E0AD27E2E807002307B3 /* Assets.xcassets in Resources */,
-				0068E0AB27E2E804002307B3 /* Main.storyboard in Resources */,
+				0068E0DE27E2F140002307B3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4333D8516DE390E6EA8D60B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookSwap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2C6E0F185D4B76D1D56F990 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSwap/Pods-BookSwap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSwap/Pods-BookSwap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookSwap/Pods-BookSwap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0068E09C27E2E804002307B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0068E0A827E2E804002307B3 /* ViewController.swift in Sources */,
+				00106F2727E8018A005BE10A /* PostISBNCollectionViewCell.swift in Sources */,
+				00106F2F27E82418005BE10A /* PhotoCollectionViewCell.swift in Sources */,
+				0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */,
+				00106F2527E80175005BE10A /* PostAuthorCollectionViewCell.swift in Sources */,
+				0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */,
+				00106F0E27E7E026005BE10A /* PosterCollectionViewCellViewModel.swift in Sources */,
+				0068E0E027E43017002307B3 /* SignInHeaderView.swift in Sources */,
+				0068E0DC27E2EC37002307B3 /* HapticsManager.swift in Sources */,
+				0068E0C627E2EB11002307B3 /* SignInViewController.swift in Sources */,
+				00106F1827E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift in Sources */,
+				00106F1C27E7E323005BE10A /* HomeFeedCellType.swift in Sources */,
+				00106F2127E80145005BE10A /* PostCollectionViewCell.swift in Sources */,
+				00106F2327E80159005BE10A /* PostTitleCollectionViewCell.swift in Sources */,
+				0068E0D427E2EBFC002307B3 /* AuthManager.swift in Sources */,
+				0068E0D627E2EC0D002307B3 /* DatabaseManager.swift in Sources */,
+				00106F2D27E8229F005BE10A /* PostEditorViewController.swift in Sources */,
+				0068E0CA27E2EB7C002307B3 /* CaptionViewController.swift in Sources */,
+				0068E0CE27E2EBA8002307B3 /* SettingsViewController.swift in Sources */,
+				0068E0A827E2E804002307B3 /* HomeViewController.swift in Sources */,
+				0068E0D227E2EBD4002307B3 /* Post.swift in Sources */,
+				0068E0C827E2EB2C002307B3 /* SignUpViewController.swift in Sources */,
+				00106F2B27E801B8005BE10A /* PostSubjectCollectionViewCell.swift in Sources */,
+				00106F1427E7E143005BE10A /* PostAuthorCollectionViewCellViewModel.swift in Sources */,
+				0068E0CC27E2EB94002307B3 /* PostViewController.swift in Sources */,
+				00106F2927E801A2005BE10A /* PostClassCollectionViewCell.swift in Sources */,
+				0068E0E427E43723002307B3 /* BATextField.swift in Sources */,
+				00106F1027E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift in Sources */,
+				00106F1627E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift in Sources */,
+				0068E0BF27E2EABE002307B3 /* CameraViewController.swift in Sources */,
+				00106F1A27E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift in Sources */,
+				0068E0C127E2EAD2002307B3 /* ProfileViewController.swift in Sources */,
+				0068E0DA27E2EC29002307B3 /* AnalyticsManager.swift in Sources */,
+				0068E0D027E2EBC8002307B3 /* User.swift in Sources */,
+				0068E0E227E4317A002307B3 /* Extensions.swift in Sources */,
 				0068E0A427E2E804002307B3 /* AppDelegate.swift in Sources */,
+				0068E0C427E2EAF7002307B3 /* TabBarViewController.swift in Sources */,
 				0068E0A627E2E804002307B3 /* SceneDelegate.swift in Sources */,
+				00106F1F27E8007B005BE10A /* PosterCollectionViewCell.swift in Sources */,
+				00106F1227E7E12F005BE10A /* PostTitleCollectionViewCellViewModel.swift in Sources */,
+				0068E0D827E2EC19002307B3 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0068E0A927E2E804002307B3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0068E0AA27E2E804002307B3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0068E0AE27E2E807002307B3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +564,7 @@
 		};
 		0068E0B527E2E807002307B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D7ACAEC31E5D1AFB05E99B1 /* Pods-BookSwap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,11 +573,13 @@
 				DEVELOPMENT_TEAM = Q9SJMV4U35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookSwap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookSwap;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,12 +589,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		0068E0B627E2E807002307B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5125227CF41B90392A4BFE39 /* Pods-BookSwap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,11 +604,13 @@
 				DEVELOPMENT_TEAM = Q9SJMV4U35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookSwap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookSwap;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
