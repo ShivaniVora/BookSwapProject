@@ -13,5 +13,14 @@ final class StorageManager {
     
     private init() {}
     
-    let storage = Storage.storage()
+    private let storage = Storage.storage().reference()
+    
+    public func uploadPost(data: Data?, id: String, completion: @escaping (Bool) -> Void) {
+        guard let email = UserDefaults.standard.string(forKey: "email"), let data = data else {
+            return
+        }
+        storage.child("\(email)/posts/\(id).png").putData(data, metadata: nil) { _, error in
+            completion(error == nil)
+        }
+    }
 }

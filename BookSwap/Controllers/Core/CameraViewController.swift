@@ -65,10 +65,10 @@ class CameraViewController: UIViewController {
    
     @objc func didTapTakePhoto() {
         //UNCOMMENT WHEN FIXED
-        //output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-        let vc = CaptionViewController(image: UIImage())
+        output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+        /*let vc = CaptionViewController(image: UIImage())
         vc.title = "Add Info"
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)*/
     }
    
     private func setUpNavBar() {
@@ -127,11 +127,27 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        guard let data = photo.fileDataRepresentation(), let image = UIImage(data: data) else {
+        guard let data = photo.fileDataRepresentation(),
+              let image = UIImage(data: data) else {
             return
         }
         captureSession?.stopRunning()
-        let vc = CaptionViewController(image: image)
+        showEditPhoto(image: image)
+    }
+
+    private func showEditPhoto(image: UIImage) {
+        guard let resizedImage = image.sd_resizedImage(
+            with: CGSize(width: 640, height: 640),
+            scaleMode: .aspectFill
+        ) else {
+            return
+        }
+
+        let vc = PostEditorViewController(image: resizedImage)
+        if #available(iOS 14.0, *) {
+            vc.navigationItem.backButtonDisplayMode = .minimal
+        }
         navigationController?.pushViewController(vc, animated: false)
+
     }
 }

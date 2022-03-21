@@ -98,7 +98,47 @@ class CaptionViewController: UIViewController, UITextFieldDelegate {
         var isbn = isbnField.text ?? ""
         var schoolClass = classField.text ?? ""
         var subject = subjectField.text ?? ""
+        
+        guard let newPostID = createNewPostID() else {
+            return
+        }
+        
+        StorageManager.shared.uploadPost(data: image.pngData(), id: newPostID) { success in
+            guard success else {
+                print("Error: failed to upload")
+                return
+            }
+            
+            let newPost = Post(id: newPostID, title: title, author: author, isbn: isbn, schoolClass: schoolClass, subject: subject)
+            
+            DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
+                guard finished else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self?.tabBarController?.tabBar.isHidden = false
+                    self?.tabBarController?.selectedIndex = 0
+                    self?.navigationController?.popToRootViewController(animated: false)
+                }
+                
+            }
+            
+                    
+        }
     }
+    
+    private func createNewPostID() -> String? {
+            let timeStamp = Date().timeIntervalSince1970
+            let randomNumber = Int.random(in: 1...1000)
+            guard let firstName = UserDefaults.standard.string(forKey: "firstName") else{
+                return nil
+            }
+            guard let lastName = UserDefaults.standard.string(forKey: "lastName") else{
+                return nil
+            }
+            return "\(firstName)_\(lastName)_\(randomNumber)_\(timeStamp)"
+        }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
