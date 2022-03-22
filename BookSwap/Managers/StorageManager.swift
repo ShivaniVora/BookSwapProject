@@ -15,12 +15,26 @@ final class StorageManager {
     
     private let storage = Storage.storage().reference()
     
-    public func uploadPost(data: Data?, id: String, completion: @escaping (Bool) -> Void) {
+    public func uploadPost(data: Data?, id: String, completion: @escaping (URL?) -> Void) {
         guard let email = UserDefaults.standard.string(forKey: "email"), let data = data else {
             return
         }
-        storage.child("\(email)/posts/\(id).png").putData(data, metadata: nil) { _, error in
-            completion(error == nil)
+        let ref = storage.child("\(email)/posts/\(id).png")
+        ref.putData(data, metadata: nil) { _, error in
+            ref.downloadURL { url, _ in
+                completion(url)
+            }
+        }
+    }
+    
+    public func downloadURL(for post: Post, completion: @escaping (URL?) -> Void) {
+        guard let ref = post.storageReference else {
+            completion(nil)
+            return
+        }
+        
+        storage.child(ref).downloadURL { url, _ in
+            completion(url)
         }
     }
 }

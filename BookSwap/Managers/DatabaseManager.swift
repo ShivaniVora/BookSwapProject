@@ -16,7 +16,17 @@ final class DatabaseManager {
     let database = Firestore.firestore()
     
     public func posts(for email: String, completion: @escaping (Result<[Post], Error>) -> Void) {
+        let ref = database.collection("users").document(email).collection("posts")
         
+        ref.getDocuments { snapshot, error in
+            guard let posts = snapshot?.documents.compactMap({
+                Post(with: $0.data())
+            }), error == nil else {
+                return
+            }
+            
+            completion(.success(posts))
+        }
     }
     
     public func findUser(with email: String, completion: @escaping (User?) -> Void) {

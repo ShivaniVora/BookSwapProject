@@ -27,26 +27,74 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     private func fetchPosts() {
+        guard let email = UserDefaults.standard.string(forKey: "email") else {
+            return
+        }
+        guard let firstName = UserDefaults.standard.string(forKey: "firstName") else {
+            return
+        }
+        guard let lastName = UserDefaults.standard.string(forKey: "lastName") else {
+            return
+        }
+        DatabaseManager.shared.posts(for: email) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let posts):
+                    print("\n\n\nPosts: \(posts.count)")
+                    
+                    let group = DispatchGroup()
+                    
+                    posts.forEach { model in
+                        group.enter()
+                        self?.createViewModel(model: model, email: email, firstName: firstName, lastName: lastName, completion: { success in
+                            defer {
+                                group.leave()
+                            }
+                            if !success {
+                                print("failed to create VM")
+                            }
+                        })
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self?.collectionView?.reloadData()
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private func createViewModel(model: Post, email: String, firstName: String, lastName: String, completion: @escaping (Bool) -> Void) {
         //mock data
+        let group = DispatchGroup()
+        group.enter()
+        
+        guard let postURL = URL(string: model.postURLString) else {
+            return
+        }
+    
         let postData: [HomeFeedCellType] = [
-            .poster(viewModel: PosterCollectionViewCellViewModel(firstName: "Joe", lastName: "Smith")),
+            .poster(viewModel: PosterCollectionViewCellViewModel(firstName:     firstName, lastName: lastName)),
+        
+            .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
             
-            .post(viewModel: PostCollectionViewCellViewModel(postUrl: URL(string: "https://iosacademy.io/assets/images/brand/icon.jpg")!)),
+            .title(viewModel: PostTitleCollectionViewCellViewModel(title: model.title)),
             
-            .title(viewModel: PostTitleCollectionViewCellViewModel(title: "Book Title")),
+            .author(viewModel: PostAuthorCollectionViewCellViewModel(author: model.author)),
             
-            .author(viewModel: PostAuthorCollectionViewCellViewModel(author: "Book Author")),
+            .isbn(viewModel: PostISBNCollectionViewCellViewModel(isbn: model.isbn)),
             
-            .isbn(viewModel: PostISBNCollectionViewCellViewModel(isbn: "1234567891")),
+            .schoolClass(viewModel: PostClassCollectionViewCellViewModel(schoolClass: model.schoolClass)),
             
-            .schoolClass(viewModel: PostClassCollectionViewCellViewModel(schoolClass: "Class that book is for")),
-            
-            .subject(viewModel: PostSubjectCollectionViewCellViewModel(subject: "Class Subject"))
+            .subject(viewModel: PostSubjectCollectionViewCellViewModel(subject: model.subject))
             
         ]
-        
-        viewModels.append(postData)
-        collectionView?.reloadData()
+    
+        self.viewModels.append(postData)
+        completion(true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

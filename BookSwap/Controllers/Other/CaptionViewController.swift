@@ -103,13 +103,13 @@ class CaptionViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        StorageManager.shared.uploadPost(data: image.pngData(), id: newPostID) { success in
-            guard success else {
+        StorageManager.shared.uploadPost(data: image.pngData(), id: newPostID) { newPostDownloadURL in
+            guard let url = newPostDownloadURL else {
                 print("Error: failed to upload")
                 return
             }
             
-            let newPost = Post(id: newPostID, title: title, author: author, isbn: isbn, schoolClass: schoolClass, subject: subject)
+            let newPost = Post(id: newPostID, title: title, author: author, isbn: isbn, schoolClass: schoolClass, subject: subject, postURLString: url.absoluteString)
             
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
                 guard finished else {
