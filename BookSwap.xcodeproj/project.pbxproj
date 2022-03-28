@@ -50,6 +50,7 @@
 		0068E0E427E43723002307B3 /* BATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E327E43723002307B3 /* BATextField.swift */; };
 		0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E527E43DD6002307B3 /* TermsViewController.swift */; };
 		0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */; };
+		00C7219027F1522F00B8CA4F /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */; };
 		8D13F57E214CDA7CAE880338 /* Pods_BookSwap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		0068E0E327E43723002307B3 /* BATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BATextField.swift; sourceTree = "<group>"; };
 		0068E0E527E43DD6002307B3 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		5125227CF41B90392A4BFE39 /* Pods-BookSwap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.release.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.release.xcconfig"; sourceTree = "<group>"; };
 		5D7ACAEC31E5D1AFB05E99B1 /* Pods-BookSwap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.debug.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.debug.xcconfig"; sourceTree = "<group>"; };
 		FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookSwap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				0068E0E527E43DD6002307B3 /* TermsViewController.swift */,
 				0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */,
 				00106F2C27E8229F005BE10A /* PostEditorViewController.swift */,
+				00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				00106F1827E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift in Sources */,
 				00106F1C27E7E323005BE10A /* HomeFeedCellType.swift in Sources */,
 				00106F2127E80145005BE10A /* PostCollectionViewCell.swift in Sources */,
+				00C7219027F1522F00B8CA4F /* SearchResultsViewController.swift in Sources */,
 				00106F2327E80159005BE10A /* PostTitleCollectionViewCell.swift in Sources */,
 				0068E0D427E2EBFC002307B3 /* AuthManager.swift in Sources */,
 				0068E0D627E2EC0D002307B3 /* DatabaseManager.swift in Sources */,

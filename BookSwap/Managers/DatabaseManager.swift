@@ -15,6 +15,60 @@ final class DatabaseManager {
     
     let database = Firestore.firestore()
     
+    public func findUsers(with firstNamePrefix: String, completion: @escaping ([User]) -> Void) {
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }), error == nil else {
+                completion([])
+                return
+            }
+            
+            let subset = users.filter({
+                $0.firstName.lowercased().hasPrefix(firstNamePrefix.lowercased())
+            })
+            
+            completion(subset)
+        }
+    }
+    
+    /*public func findUserPosts(with titlePrefix: String, completion: @escaping ([User]) -> Void) {
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }), error == nil else {
+                completion([])
+                return
+            }
+            
+            let subset = users.filter({
+                $0.title.lowercased().hasPrefix(titlePrefix.lowercased())
+            })
+            
+            completion(subset)
+        }
+    }
+     
+     public func getPost(
+             with identifer: String,
+             from username: String,
+             completion: @escaping (Post?) -> Void
+         ) {
+             let ref = database.collection("users")
+                 .document(username)
+                 .collection("posts")
+                 .document(identifer)
+             ref.getDocument { snapshot, error in
+                 guard let data = snapshot?.data(),
+                       error == nil else {
+                     completion(nil)
+                     return
+                 }
+
+                 completion(Post(with: data))
+             }
+         }
+     
+     */
+    
     public func posts(for email: String, completion: @escaping (Result<[Post], Error>) -> Void) {
         let ref = database.collection("users").document(email).collection("posts")
         

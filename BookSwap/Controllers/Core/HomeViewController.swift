@@ -7,7 +7,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating {
+    
+    private var searchVC = UISearchController(searchResultsController: SearchResultsViewController())
     
     private var viewModels = [[HomeFeedCellType]]()
 
@@ -17,6 +19,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         title = "Home"
         view.backgroundColor = .systemBackground
+        (searchVC.searchResultsController as? SearchResultsViewController)?.delegate = self
+        searchVC.searchBar.placeholder = "Search..."
+        searchVC.searchResultsUpdater = self
+        navigationItem.searchController = searchVC
         configureCollectionView()
         fetchPosts()
     }
@@ -24,6 +30,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let resultsVC = searchController.searchResultsController as? SearchResultsViewController,
+              let query = searchController.searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty
+        else {
+            return
+        }
+        
+        DatabaseManager.shared.findUsers(with: query) { results in
+            DispatchQueue.main.async {
+                resultsVC.update(with: results)
+            }
+        }
     }
     
     private func fetchPosts() {
@@ -232,6 +253,13 @@ extension HomeViewController {
         collectionView.register(PostSubjectCollectionViewCell.self, forCellWithReuseIdentifier: PostSubjectCollectionViewCell.identifier)
         
         self.collectionView = collectionView
+    }
+}
+
+extension HomeViewController: SearchResultsViewControllerDelegate {
+    func searchResultsViewController(_ vc: SearchResultsViewController, didSelectResultWith user: User) {
+        let vc = ProfileViewController(user: user)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
