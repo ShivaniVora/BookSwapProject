@@ -20,7 +20,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.isHidden = true
-        tableView.register(UITableView.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
 
