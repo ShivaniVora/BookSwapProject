@@ -43,6 +43,8 @@ class ProfileViewController: UIViewController {
         
         // Uncomment to use function
         /*var buttonType: ProfileButtonType = .edit
+        let firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
+        let lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
         var name: String = "\(user.firstName) \(user.lastName)"
         var email: String = user.email
         var phone: String?
@@ -159,8 +161,9 @@ extension ProfileViewController {
 extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     func profileHeaderCollectionViewDidTapEditProfile(_ reusableView: ProfileHeaderCollectionReusableView) {
         let vc = EditProfileViewController()
-        vc.completion = {
-            
+        vc.completion = { /*[weak self] in
+            self?.headerViewModel = nil
+            self?.fetchProfileInfo()*/
         }
         
         let navVC = UINavigationController(rootViewController: vc)
