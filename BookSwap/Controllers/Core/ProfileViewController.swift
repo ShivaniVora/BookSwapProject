@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     
+    private var headerViewModel: ProfileHeaderViewModel?
+    
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -35,9 +37,38 @@ class ProfileViewController: UIViewController {
         fetchProfileInfo()
     }
     
+    
     private func fetchProfileInfo() {
         //name, email, profile
         
+        // Uncomment to use function
+        /*var buttonType: ProfileButtonType = .edit
+        var name: String = "\(user.firstName) \(user.lastName)"
+        var email: String = user.email
+        var phone: String?
+        
+        let group = DispatchGroup()
+        
+        DatabaseManager.shared.getUserInfo(email: user.email) { userInfo in
+            phone = userInfo?.phone
+        }
+        
+        
+        group.enter()
+        
+        if !isCurrentUser {
+            group.enter()
+            buttonType = .hidden
+            defer {
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.headerViewModel = ProfileHeaderViewModel(name: name, email: email, phone: phone ?? "", buttonType: buttonType)
+        }
+        
+        self.collectionView?.reloadData()*/
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,8 +107,16 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard kind == UICollectionView.elementKindSectionHeader, let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier, for: indexPath) as? ProfileHeaderCollectionReusableView else {
             return UICollectionReusableView()
         }
-        let viewModel = ProfileHeaderViewModel(name: "Joey Smith", email: "jsmith@email.com", phone: "123-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
+        
+        
+        //Uncomment to access the data from fetchUserInfo (and comment two lines below)
+        /*if let viewModel = headerViewModel {
+            headerView.configure(with: viewModel)
+        }*/
+        
+        let viewModel = ProfileHeaderViewModel(name: "Joe Smith", email: "joesmith@email", phone: "(123)-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
         headerView.configure(with: viewModel)
+        
         return headerView
     }
     
@@ -119,6 +158,12 @@ extension ProfileViewController {
 
 extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     func profileHeaderCollectionViewDidTapEditProfile(_ reusableView: ProfileHeaderCollectionReusableView) {
+        let vc = EditProfileViewController()
+        vc.completion = {
+            
+        }
         
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
     }
 }

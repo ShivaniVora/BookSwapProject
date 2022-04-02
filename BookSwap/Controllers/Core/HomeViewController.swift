@@ -98,7 +98,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     
         let postData: [HomeFeedCellType] = [
-            .poster(viewModel: PosterCollectionViewCellViewModel(firstName:     firstName, lastName: lastName)),
+            .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName)),
         
             .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
             

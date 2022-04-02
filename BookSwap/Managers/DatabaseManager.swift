@@ -121,4 +121,30 @@ final class DatabaseManager {
             completion(error == nil)
         }
     }
+    
+    public func getUserInfo(email: String, completion: @escaping (UserInfo?) -> Void) {
+        let ref = database.collection("users").document(email).collection("information").document("basic")
+        
+        ref.getDocument { snapshot, error in
+            guard let data = snapshot?.data(), let userInfo = UserInfo(with: data) else {
+                completion(nil)
+                return
+            }
+            completion(userInfo)
+        }
+    }
+    
+    public func setUserInfo(userInfo: UserInfo, completion: @escaping (Bool) -> Void) {
+        guard let email = UserDefaults.standard.string(forKey: "email"), let data = userInfo.asDictionary() else {
+            return
+        }
+        
+        let ref = database.collection("users").document(email).collection("information").document("basic")
+        
+        ref.setData(data) { error in
+            completion(error == nil)
+        }
+    }
+    
+    
 }

@@ -52,6 +52,8 @@
 		0068E0E427E43723002307B3 /* BATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E327E43723002307B3 /* BATextField.swift */; };
 		0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E527E43DD6002307B3 /* TermsViewController.swift */; };
 		0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */; };
+		00C6F43C27F8BFCF00AD6246 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */; };
+		00C6F43E27F8C36F00AD6246 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */; };
 		00C7219027F1522F00B8CA4F /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */; };
 		8D13F57E214CDA7CAE880338 /* Pods_BookSwap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD84C7747FE509142F03D73 /* Pods_BookSwap.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,8 @@
 		0068E0E327E43723002307B3 /* BATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BATextField.swift; sourceTree = "<group>"; };
 		0068E0E527E43DD6002307B3 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		5125227CF41B90392A4BFE39 /* Pods-BookSwap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.release.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.release.xcconfig"; sourceTree = "<group>"; };
 		5D7ACAEC31E5D1AFB05E99B1 /* Pods-BookSwap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSwap.debug.xcconfig"; path = "Target Support Files/Pods-BookSwap/Pods-BookSwap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				0068E0CF27E2EBC8002307B3 /* User.swift */,
 				0068E0D127E2EBD4002307B3 /* Post.swift */,
 				00106F1B27E7E323005BE10A /* HomeFeedCellType.swift */,
+				00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */,
 				00106F2C27E8229F005BE10A /* PostEditorViewController.swift */,
 				00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */,
+				00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				00106F0E27E7E026005BE10A /* PosterCollectionViewCellViewModel.swift in Sources */,
 				0068E0E027E43017002307B3 /* SignInHeaderView.swift in Sources */,
 				0068E0DC27E2EC37002307B3 /* HapticsManager.swift in Sources */,
+				00C6F43E27F8C36F00AD6246 /* EditProfileViewController.swift in Sources */,
 				0068E0C627E2EB11002307B3 /* SignInViewController.swift in Sources */,
 				00106F1827E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift in Sources */,
 				00106F1C27E7E323005BE10A /* HomeFeedCellType.swift in Sources */,
@@ -418,6 +425,7 @@
 				0068E0CA27E2EB7C002307B3 /* CaptionViewController.swift in Sources */,
 				0037347227F3F69A00F07879 /* ProfileHeaderViewModel.swift in Sources */,
 				0068E0CE27E2EBA8002307B3 /* SettingsViewController.swift in Sources */,
+				00C6F43C27F8BFCF00AD6246 /* UserInfo.swift in Sources */,
 				0068E0A827E2E804002307B3 /* HomeViewController.swift in Sources */,
 				0068E0D227E2EBD4002307B3 /* Post.swift in Sources */,
 				0068E0C827E2EB2C002307B3 /* SignUpViewController.swift in Sources */,
