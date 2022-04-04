@@ -51,7 +51,7 @@ class EditProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSave))
         
         
-        /*guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+        guard let email = UserDefaults.standard.string(forKey: "email") else { return }
         
         DatabaseManager.shared.getUserInfo(email: email) { [weak self] info in
             DispatchQueue.main.async {
@@ -63,7 +63,7 @@ class EditProfileViewController: UIViewController {
                 self?.firstNameField.text = UserDefaults.standard.string(forKey: "firstName")
                 self?.lastNameField.text = UserDefaults.standard.string(forKey: "lastName")
             }
-        }*/
+        }
          
 
     }
@@ -82,12 +82,12 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func didTapSave() {
-        /*let email = emailField.text ?? ""
+        let email = emailField.text ?? ""
         let firstName = firstNameField.text ?? ""
         let lastName = lastNameField.text ?? ""
-        let phone = phoneField.text ?? ""*/
+        let phone = phoneField.text ?? ""
         
-        let newInfo = UserInfo(phone: "")
+        let newInfo = UserInfo(phone: phone)
         DatabaseManager.shared.setUserInfo(userInfo: newInfo) { [weak self] success in
             DispatchQueue.main.async {
                 if success {

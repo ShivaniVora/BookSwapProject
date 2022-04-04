@@ -119,6 +119,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         let viewModel = ProfileHeaderViewModel(name: "Joe Smith", email: "joesmith@email", phone: "(123)-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
         headerView.configure(with: viewModel)
         
+        headerView.delegate = self
+        
         return headerView
     }
     
@@ -161,9 +163,9 @@ extension ProfileViewController {
 extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     func profileHeaderCollectionViewDidTapEditProfile(_ reusableView: ProfileHeaderCollectionReusableView) {
         let vc = EditProfileViewController()
-        vc.completion = { /*[weak self] in
+        vc.completion = { [weak self] in
             self?.headerViewModel = nil
-            self?.fetchProfileInfo()*/
+            self?.fetchProfileInfo()
         }
         
         let navVC = UINavigationController(rootViewController: vc)
