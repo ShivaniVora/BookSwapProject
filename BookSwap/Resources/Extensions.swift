@@ -44,6 +44,16 @@ extension Decodable {
         }
         self = result
     }
+    
+    /*func fromDictionary(with dictionary: [String: Any]) -> AnyObject {
+        guard let json = try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted) as? [String: Any]
+        
+        guard let data = try? JSONDecoder().decode(Self.self, from: json) else {
+            return nil
+        }
+        
+        return json
+    }*/
 }
 
 extension Encodable {

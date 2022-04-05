@@ -122,26 +122,43 @@ final class DatabaseManager {
         }
     }
     
-    public func getUserInfo(email: String, completion: @escaping (UserInfo?) -> Void) {
+    public func getUserInfo(email: String, completion: @escaping (UserInfo?, User?) -> Void) {
         let ref = database.collection("users").document(email).collection("information").document("basic")
+        let userRef = database.collection("users").document(email)
         
         ref.getDocument { snapshot, error in
             guard let data = snapshot?.data(), let userInfo = UserInfo(with: data) else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
-            completion(userInfo)
+            
+            userRef.getDocument { snapshot2, error2 in
+                guard let userData = snapshot2?.data(),
+                        let user = User(with: userData) else {
+                        completion(userInfo, nil)
+                        return
+                    }
+                
+                    completion(userInfo, user)
+                }
         }
+        
     }
     
-    public func setUserInfo(userInfo: UserInfo, completion: @escaping (Bool) -> Void) {
-        guard let email = UserDefaults.standard.string(forKey: "email"), let data = userInfo.asDictionary() else {
+    public func setUserInfo(userInfo: UserInfo, user: User, completion: @escaping (Bool) -> Void) {
+        let email = user.email
+        guard let data = userInfo.asDictionary(), let userData = user.asDictionary() else {
             return
         }
         
         let ref = database.collection("users").document(email).collection("information").document("basic")
+        let userRef = database.collection("users").document(email)
         
         ref.setData(data) { error in
+            completion(error == nil)
+        }
+        
+        userRef.setData(userData) { error in
             completion(error == nil)
         }
     }

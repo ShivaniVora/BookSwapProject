@@ -41,22 +41,39 @@ class ProfileViewController: UIViewController {
     private func fetchProfileInfo() {
         //name, email, profile
         
-        // Uncomment to use function
-        /*var buttonType: ProfileButtonType = .edit
-        let firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
-        let lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
+        var buttonType: ProfileButtonType = .edit
+        /*var firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
+        var lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
         var name: String = "\(user.firstName) \(user.lastName)"
-        var email: String = user.email
-        var phone: String?
+        var email: String = user.email*/
+        
+        var firstName: String = ""
+        var lastName: String = ""
+        var name: String = ""
+        var email: String = ""
+        var phone: String = ""
         
         let group = DispatchGroup()
         
-        DatabaseManager.shared.getUserInfo(email: user.email) { userInfo in
-            phone = userInfo?.phone
+        DatabaseManager.shared.getUserInfo(email: user.email) { [weak self] userInfo, user in
+            phone = userInfo?.phone ?? ""
+            email = user?.email ?? ""
+            firstName = user?.firstName ?? ""
+            lastName = user?.lastName ?? ""
+            name = "\(firstName) \(lastName)"
+            
+            if !(self?.isCurrentUser ?? false) {
+                buttonType = .hidden
+            }
+            
+            self?.headerViewModel = ProfileHeaderViewModel(name: name, email: email, phone: phone, buttonType: buttonType)
+            
+            self?.collectionView?.reloadData()
         }
         
         
-        group.enter()
+        
+        /*group.enter()
         
         if !isCurrentUser {
             group.enter()
@@ -112,12 +129,12 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         
         //Uncomment to access the data from fetchUserInfo (and comment two lines below)
-        /*if let viewModel = headerViewModel {
+        if let viewModel = headerViewModel {
             headerView.configure(with: viewModel)
-        }*/
+        }
         
-        let viewModel = ProfileHeaderViewModel(name: "Joe Smith", email: "joesmith@email", phone: "(123)-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
-        headerView.configure(with: viewModel)
+        /*let viewModel = ProfileHeaderViewModel(name: "Joe Smith", email: "joesmith@email", phone: "(123)-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
+        headerView.configure(with: viewModel)*/
         
         headerView.delegate = self
         

@@ -8,7 +8,7 @@
 import Foundation
 
 struct User: Codable {
-    let firstName: String
-    let lastName: String
-    let email: String
+    var firstName: String
+    var lastName: String
+    var email: String
 }

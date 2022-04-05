@@ -53,15 +53,22 @@ class EditProfileViewController: UIViewController {
         
         guard let email = UserDefaults.standard.string(forKey: "email") else { return }
         
-        DatabaseManager.shared.getUserInfo(email: email) { [weak self] info in
+        DatabaseManager.shared.getUserInfo(email: email) { [weak self] info, user in
             DispatchQueue.main.async {
                 if let info = info {
                     self?.phoneField.text = info.phone
                 }
                 
-                self?.emailField.text = email
+                /*self?.emailField.text = email
                 self?.firstNameField.text = UserDefaults.standard.string(forKey: "firstName")
-                self?.lastNameField.text = UserDefaults.standard.string(forKey: "lastName")
+                self?.lastNameField.text = UserDefaults.standard.string(forKey: "lastName")*/
+                if let user = user {
+                    self?.emailField.text = user.email
+                    self?.firstNameField.text = user.firstName
+                    self?.lastNameField.text = user.lastName
+                }
+                
+                
             }
         }
          
@@ -88,7 +95,9 @@ class EditProfileViewController: UIViewController {
         let phone = phoneField.text ?? ""
         
         let newInfo = UserInfo(phone: phone)
-        DatabaseManager.shared.setUserInfo(userInfo: newInfo) { [weak self] success in
+        let user = User(firstName: firstName, lastName: lastName, email: email)
+        
+        DatabaseManager.shared.setUserInfo(userInfo: newInfo, user: user) { [weak self] success in
             DispatchQueue.main.async {
                 if success {
                     self?.didTapClose()

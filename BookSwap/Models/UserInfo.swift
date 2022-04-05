@@ -8,5 +8,5 @@
 import Foundation
 
 struct UserInfo: Codable {
-    let phone: String
+    var phone: String
 }
