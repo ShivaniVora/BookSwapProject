@@ -123,8 +123,19 @@ final class DatabaseManager {
     }
     
     public func getUserInfo(email: String, completion: @escaping (UserInfo?, User?) -> Void) {
-        let ref = database.collection("users").document(email).collection("information").document("basic")
+    
+        
+        let ref = database.document("users/\(email)/information/basic")
         let userRef = database.collection("users").document(email)
+        
+        ref.getDocument { snapshot, error in
+            guard let data = snapshot?.data(), let userInfo = UserInfo(with: data) else {
+                ref.setData(["phone": ""], merge: true)
+                return
+                }
+            }
+            
+        
         
         ref.getDocument { snapshot, error in
             guard let data = snapshot?.data(), let userInfo = UserInfo(with: data) else {
