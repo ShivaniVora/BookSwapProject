@@ -162,7 +162,7 @@ final class DatabaseManager {
             return
         }
         
-        let ref = database.collection("users").document(email).collection("information").document("basic")
+        let ref = database.document("users/\(email)/information/basic")
         let userRef = database.collection("users").document(email)
         
         ref.setData(data) { error in
