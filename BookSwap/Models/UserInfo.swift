@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct UserInfo: Codable {
+class UserInfo: Codable {
     var phone: String
+    
+    init(phone: String) {
+        self.phone = phone
+    }
 }

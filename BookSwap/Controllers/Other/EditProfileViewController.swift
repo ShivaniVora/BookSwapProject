@@ -100,8 +100,8 @@ class EditProfileViewController: UIViewController {
         DatabaseManager.shared.setUserInfo(userInfo: newInfo, user: user) { [weak self] success in
             DispatchQueue.main.async {
                 if success {
-                    self?.didTapClose()
                     self?.completion?()
+                    self?.didTapClose()
                 }
             }
         }

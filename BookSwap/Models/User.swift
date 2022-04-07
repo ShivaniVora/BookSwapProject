@@ -7,8 +7,14 @@
 
 import Foundation
 
-struct User: Codable {
+class User: Codable {
     var firstName: String
     var lastName: String
     var email: String
+    
+    init(firstName: String, lastName: String, email: String){
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+    }
 }
