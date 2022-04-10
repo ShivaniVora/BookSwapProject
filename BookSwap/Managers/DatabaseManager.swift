@@ -4,7 +4,7 @@
 //
 //  Created by Shivani Vora on 3/17/22.
 //
-
+//
 import FirebaseFirestore
 import Foundation
 
@@ -70,17 +70,22 @@ final class DatabaseManager {
      */
     
     public func posts(for email: String, completion: @escaping (Result<[Post], Error>) -> Void) {
-        let ref = database.collection("users").document(email).collection("posts")
+        //let reference = database.document("users/\(email)/posts")
         
-        ref.getDocuments { snapshot, error in
-            guard let posts = snapshot?.documents.compactMap({
+        //reference.getDocuments { snapshot, error in
+            /*guard let posts = snapshot?.documents.compactMap({
                 Post(with: $0.data())
-            }), error == nil else {
+            }).sorted(by: {
+                return $0 < $1
+            }),
+            error == nil else {
                 return
-            }
+            }*/
             
-            completion(.success(posts))
-        }
+            
+            
+            //completion(.success(posts))
+        //}
     }
     
     public func findUser(with email: String, completion: @escaping (User?) -> Void) {
@@ -173,6 +178,4 @@ final class DatabaseManager {
             completion(error == nil)
         }
     }
-    
-    
 }

@@ -11,6 +11,8 @@ class ProfileViewController: UIViewController {
 
     private let user: User
     
+    private var posts: [Post] = []
+    
     private var isCurrentUser: Bool {
         return user.email.lowercased() == UserDefaults.standard.string(forKey: "email")?.lowercased() ?? ""
     }
@@ -42,11 +44,6 @@ class ProfileViewController: UIViewController {
         //name, email, profile
         
         var buttonType: ProfileButtonType = .edit
-        /*var firstName: String = UserDefaults.standard.string(forKey: "firstName") ?? ""
-        var lastName: String = UserDefaults.standard.string(forKey: "lastName") ?? ""
-        var name: String = "\(user.firstName) \(user.lastName)"
-        var email: String = user.email*/
-        
         var firstName: String = ""
         var lastName: String = ""
         var name: String = ""
@@ -73,23 +70,33 @@ class ProfileViewController: UIViewController {
         
         
         
-        /*group.enter()
+        group.enter()
         
         if !isCurrentUser {
             group.enter()
             buttonType = .hidden
+        }
+        
+        //Fetch posts
+        DatabaseManager.shared.posts(for: email) { [weak self] result in
             defer {
                 group.leave()
             }
+            
+            /*group.notify(queue: .main) {
+                self.headerViewModel = ProfileHeaderViewModel(name: name, email: email, phone: phone ?? "", buttonType: buttonType)
+            }*/
+            
+            switch result {
+            case .success(let posts):
+                self?.posts = posts
+            case .failure:
+                break
+            }
         }
-        
-        group.notify(queue: .main) {
-            self.headerViewModel = ProfileHeaderViewModel(name: name, email: email, phone: phone ?? "", buttonType: buttonType)
-        }
-        
-        self.collectionView?.reloadData()*/
     }
-    
+            
+            
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
@@ -119,6 +126,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         cell.configure(with: UIImage(named: "test"))
+        //cell.configure(with: URL(string: posts[indexPath.row].postURLString))
         return cell
     }
     
@@ -126,7 +134,6 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard kind == UICollectionView.elementKindSectionHeader, let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileHeaderCollectionReusableView.identifier, for: indexPath) as? ProfileHeaderCollectionReusableView else {
             return UICollectionReusableView()
         }
-        
         
         //Uncomment to access the data from fetchUserInfo (and comment two lines below)
         if let viewModel = headerViewModel {
@@ -138,14 +145,16 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         headerView.delegate = self
         
+        //let viewModel = ProfileHeaderViewModel(name: "Joey Smith", email: "jsmith@email.com", phone: "123-456-789", buttonType: self.isCurrentUser ? .edit : .hidden)
+        //headerView.configure(with: viewModel)
         return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        //let post = posts[indexPath.row]
-        //let vc = PostViewController(post: post)
-        //navigationController?.pushViewContoller(vc, animated: true)
+        let post = posts[indexPath.row]
+        let vc = PostViewController(post: post)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

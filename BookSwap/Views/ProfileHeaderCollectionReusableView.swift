@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol ProfileHeaderCollectionReusableViewDelegate: AnyObject {
-    func profileHeaderCollectionViewDidTapEditProfile(_ header: ProfileHeaderCollectionReusableView)
+    func profileHeaderCollectionViewDidTapEditProfile(_ reusableView: ProfileHeaderCollectionReusableView)
 }
 
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
@@ -50,7 +50,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         nameLabel.text = nil
         emailLabel.text = nil
         phoneLabel.text = nil
-        actionButton.isHidden = false
     }
     
     public func configure(with viewModel: ProfileHeaderViewModel) {

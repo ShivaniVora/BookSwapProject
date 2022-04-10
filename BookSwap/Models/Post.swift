@@ -16,6 +16,11 @@ struct Post: Codable {
     let subject: String
     let postURLString: String
     
+    var date: Date? {
+        //return DateFormatter.formatter.date(from: date)
+        return Date()
+    }
+    
     var storageReference: String? {
         guard let email = UserDefaults.standard.string(forKey: "email") else {
             return nil

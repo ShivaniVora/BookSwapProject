@@ -10,6 +10,8 @@ import UIKit
 
 class CameraViewController: UIViewController {
 
+    private var info: [UIImage] = []
+    
     private var output = AVCapturePhotoOutput()
     private var captureSession: AVCaptureSession?
     private let previewLayer = AVCaptureVideoPreviewLayer()
@@ -22,16 +24,27 @@ class CameraViewController: UIViewController {
         button.backgroundColor = nil
         return button
     }()
+    
+    private let photoPickerButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .label
+        button.setImage(UIImage(systemName: "photo",
+                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)),
+                                        for: .normal)
+        return button
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Post a Book"
         view.addSubview(cameraView)
         view.addSubview(shutterButton)
+        view.addSubview(photoPickerButton)
         setUpNavBar()
         checkCameraPermission()
         view.backgroundColor = .secondarySystemBackground
         shutterButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
+        photoPickerButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
     }
    
     override func viewDidAppear(_ animated: Bool) {
@@ -55,12 +68,25 @@ class CameraViewController: UIViewController {
         let buttonSize: CGFloat = view.width/5
         shutterButton.frame = CGRect(x: (view.width-buttonSize)/2, y: view.safeAreaInsets.top + view.width + 100, width: buttonSize, height: buttonSize)
         shutterButton.layer.cornerRadius = buttonSize/2
+        
+        photoPickerButton.frame = CGRect(x: (shutterButton.left - buttonSize),
+                                         y: (shutterButton.top + buttonSize/3),
+                                         width: buttonSize/2,
+                                         height: buttonSize/3)
        
     }
    
     @objc func didTapClose() {
         tabBarController?.selectedIndex = 0
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    @objc func didTapPickPhoto() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
    
     @objc func didTapTakePhoto() {
@@ -125,16 +151,22 @@ class CameraViewController: UIViewController {
 
 }
 
-extension CameraViewController: AVCapturePhotoCaptureDelegate {
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        guard let data = photo.fileDataRepresentation(),
-              let image = UIImage(data: data) else {
+extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        /*guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
-        }
-        captureSession?.stopRunning()
-        showEditPhoto(image: image)
+        }*/
     }
-
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true, completion: nil)
+            guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+                return
+            }
+            showEditPhoto(image: image)
+        }
+    
     private func showEditPhoto(image: UIImage) {
         guard let resizedImage = image.sd_resizedImage(
             with: CGSize(width: 640, height: 640),
@@ -150,4 +182,33 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         navigationController?.pushViewController(vc, animated: false)
 
     }
+}
+
+
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let data = photo.fileDataRepresentation(),
+              let image = UIImage(data: data) else {
+            return
+        }
+        captureSession?.stopRunning()
+        showEditPhoto(image: image)
+    }
+
+    /*private func showEditPhoto(image: UIImage) {
+        guard let resizedImage = image.sd_resizedImage(
+            with: CGSize(width: 640, height: 640),
+            scaleMode: .aspectFill
+        ) else {
+            return
+        }
+
+        let vc = PostEditorViewController(image: resizedImage)
+        if #available(iOS 14.0, *) {
+            vc.navigationItem.backButtonDisplayMode = .minimal
+        }
+        navigationController?.pushViewController(vc, animated: false)
+
+    }*/
 }
