@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
         var firstName: String = ""
         var lastName: String = ""
         var name: String = ""
-        var email: String = ""
+        var email: String = user.email
         var phone: String = ""
         
         let group = DispatchGroup()
@@ -117,7 +117,7 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -125,8 +125,8 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             fatalError()
         }
         
-        cell.configure(with: UIImage(named: "test"))
-        //cell.configure(with: URL(string: posts[indexPath.row].postURLString))
+        //cell.configure(with: UIImage(named: "test"))
+        cell.configure(with: URL(string: posts[indexPath.row].postURLString))
         return cell
     }
     
