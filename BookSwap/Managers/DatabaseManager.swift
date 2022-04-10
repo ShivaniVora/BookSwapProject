@@ -70,22 +70,21 @@ final class DatabaseManager {
      */
     
     public func posts(for email: String, completion: @escaping (Result<[Post], Error>) -> Void) {
-        //let reference = database.document("users/\(email)/posts")
+        //let reference = database.collection("users/\(email)/posts")
         
-        //reference.getDocuments { snapshot, error in
-            /*guard let posts = snapshot?.documents.compactMap({
+        /*reference.getDocuments { snapshot, error in
+            guard let posts = snapshot?.documents.compactMap({
                 Post(with: $0.data())
             }).sorted(by: {
                 return $0 < $1
             }),
-            error == nil else {
+                  error == nil else {
+                completion(.failure(error as! Error))
                 return
-            }*/
+            }
             
-            
-            
-            //completion(.success(posts))
-        //}
+            completion(.success(posts))
+        }*/
     }
     
     public func findUser(with email: String, completion: @escaping (User?) -> Void) {
