@@ -15,4 +15,5 @@ enum HomeFeedCellType {
     case isbn(viewModel: PostISBNCollectionViewCellViewModel)
     case schoolClass(viewModel: PostClassCollectionViewCellViewModel)
     case subject(viewModel: PostSubjectCollectionViewCellViewModel)
+    case timestamp(viewModel: PostDatetimeCollectionViewCellViewModel)
 }

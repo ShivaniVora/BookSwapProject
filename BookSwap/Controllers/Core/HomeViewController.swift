@@ -15,6 +15,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private var collectionView: UICollectionView?
     
+    private var observer: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
@@ -25,6 +27,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         navigationItem.searchController = searchVC
         configureCollectionView()
         fetchPosts()
+        
+        observer = NotificationCenter.default.addObserver(
+            forName: .didPostNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.viewModels.removeAll()
+            self?.fetchPosts()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,35 +68,96 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         guard let lastName = UserDefaults.standard.string(forKey: "lastName") else {
             return
         }
-        DatabaseManager.shared.posts(for: email) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let posts):
-                    print("\n\n\nPosts: \(posts.count)")
-                    
-                    let group = DispatchGroup()
-                    
-                    posts.forEach { model in
-                        group.enter()
-                        self?.createViewModel(model: model, email: email, firstName: firstName, lastName: lastName, completion: { success in
-                            defer {
-                                group.leave()
-                            }
-                            if !success {
-                                print("failed to create VM")
-                            }
-                        })
+        
+        let userGroup = DispatchGroup()
+        userGroup.enter()
+        
+        var allPosts: [(post: Post, owner: String)] = []
+        
+        //this not happy - ~1:00 in "Query for Feed"
+        //need to traverse through all users/some group of users other than following
+        DatabaseManager.shared.getAllUsers(for: email) { emails in
+            defer {
+                userGroup.leave()
+            }
+            let users = emails + [email]
+            
+            for current in emails {
+                userGroup.enter()
+                DatabaseManager.shared.posts(for: email) { result in
+                    DispatchQueue.main.async {
+                        defer {
+                            userGroup.leave()
+                        }
+                        switch result {
+                        case .success(let posts):
+                            allPosts.append(contentsOf: posts.compactMap({
+                                (post: $0, owner: current)
+                            }))
+                            
+                            
+                        case .failure:
+                            break
+                        }
                     }
-                    
-                    group.notify(queue: .main) {
-                        self?.collectionView?.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    print(error)
                 }
             }
         }
+        userGroup.notify(queue: .main) {
+            let group = DispatchGroup()
+            allPosts.forEach { model in
+                group.enter()
+                self.createViewModel(model: model.post,
+                                     email: model.owner,
+                                     firstName: firstName,
+                                     lastName: lastName,
+                                     completion: { success in
+                                        defer {
+                                            group.leave()
+                                        }
+                                        if !success {
+                                            print("failed to create VM")
+                                        }
+                                    }
+                )
+            }
+            group.notify(queue: .main) {
+                self.sortViewModels()
+                self.collectionView?.reloadData()
+            }
+            
+            group.notify(queue: .main) {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    private func sortViewModels() {
+        self.viewModels = self.viewModels.sorted(by: { first, second in
+            var date1: Date?
+            var date2: Date?
+            first.forEach { type in
+                switch type {
+                case .timestamp(let vm)://search query 1:00
+                    date1 = vm.date
+                default:
+                    break
+                }
+            }
+            second.forEach { type in
+                switch type {
+                case .timestamp(let vm)://search query 1:00
+                    date2 = vm.date
+                default:
+                    break
+                }
+            }
+            
+            if let date1 = date1, let date2 = date2 {
+                return date1 > date2
+            }
+            return false
+        })
     }
     
     private func createViewModel(model: Post, email: String, firstName: String, lastName: String, completion: @escaping (Bool) -> Void) {
@@ -188,8 +260,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             cell.configure(with: viewModel)
             return cell
+            
+        case .timestamp(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostDatetimeCollectionViewCell.identifer, for: indexPath) as? PostDatetimeCollectionViewCell else {
+                        fatalError()
+                }
+            cell.configure(with: viewModel)
+            return cell
         }
-        
     }
 }
 

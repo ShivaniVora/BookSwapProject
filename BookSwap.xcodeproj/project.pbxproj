@@ -52,6 +52,8 @@
 		0068E0E427E43723002307B3 /* BATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E327E43723002307B3 /* BATextField.swift */; };
 		0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E527E43DD6002307B3 /* TermsViewController.swift */; };
 		0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */; };
+		006D538D280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D538C280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift */; };
+		006D538F280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D538E280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift */; };
 		00C6F43C27F8BFCF00AD6246 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */; };
 		00C6F43E27F8C36F00AD6246 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */; };
 		00C7219027F1522F00B8CA4F /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */; };
@@ -106,6 +108,8 @@
 		0068E0E327E43723002307B3 /* BATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BATextField.swift; sourceTree = "<group>"; };
 		0068E0E527E43DD6002307B3 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		006D538C280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatetimeCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		006D538E280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatetimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				00106F2627E8018A005BE10A /* PostISBNCollectionViewCell.swift */,
 				00106F2827E801A2005BE10A /* PostClassCollectionViewCell.swift */,
 				00106F2A27E801B8005BE10A /* PostSubjectCollectionViewCell.swift */,
+				006D538E280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift */,
 			);
 			path = "Home Cells";
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				00106F1727E7E16E005BE10A /* PostClassCollectionViewCellViewModel.swift */,
 				00106F1927E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift */,
 				0037347127F3F69A00F07879 /* ProfileHeaderViewModel.swift */,
+				006D538C280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00106F2727E8018A005BE10A /* PostISBNCollectionViewCell.swift in Sources */,
+				006D538F280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift in Sources */,
 				00106F2F27E82418005BE10A /* PhotoCollectionViewCell.swift in Sources */,
 				0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */,
 				00106F2527E80175005BE10A /* PostAuthorCollectionViewCell.swift in Sources */,
@@ -436,6 +443,7 @@
 				0068E0E427E43723002307B3 /* BATextField.swift in Sources */,
 				00106F1027E7E0DA005BE10A /* PostCollectionViewCellViewModel.swift in Sources */,
 				00106F1627E7E15A005BE10A /* PostISBNCollectionViewCellViewModel.swift in Sources */,
+				006D538D280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift in Sources */,
 				0068E0BF27E2EABE002307B3 /* CameraViewController.swift in Sources */,
 				00106F1A27E7E181005BE10A /* PostSubjectCollectionViewCellViewModel.swift in Sources */,
 				0068E0C127E2EAD2002307B3 /* ProfileViewController.swift in Sources */,

@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController {
     
     private var posts: [Post] = []
     
+    private var observer: NSObjectProtocol?
+    
     private var isCurrentUser: Bool {
         return user.email.lowercased() == UserDefaults.standard.string(forKey: "email")?.lowercased() ?? ""
     }
@@ -37,6 +39,17 @@ class ProfileViewController: UIViewController {
         configureNavBar()
         configureCollectionView()
         fetchProfileInfo()
+        
+        if isCurrentUser {
+            observer = NotificationCenter.default.addObserver(
+                forName: .didPostNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.posts.removeAll()
+                self?.fetchProfileInfo()
+            }
+        }
     }
     
     

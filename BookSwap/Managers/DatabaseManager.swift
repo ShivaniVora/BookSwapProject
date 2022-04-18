@@ -15,6 +15,18 @@ final class DatabaseManager {
     
     let database = Firestore.firestore()
     
+    //just made this function, not tested
+    public func getAllUsers(for email: String, completion: @escaping ([String]) -> Void) {
+        let ref = database.collection("users")
+        ref.getDocuments { snapshot, error in
+            guard let users = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
+                completion([])
+                return
+            }
+            completion(users)
+        }
+    }
+    
     public func findUsers(with firstNamePrefix: String, completion: @escaping ([User]) -> Void) {
         let ref = database.collection("users")
         ref.getDocuments { snapshot, error in
