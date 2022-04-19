@@ -54,6 +54,7 @@
 		0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */; };
 		006D538D280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D538C280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift */; };
 		006D538F280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D538E280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift */; };
+		006D5391280E38E7000F7936 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D5390280E38E4000F7936 /* SettingsModels.swift */; };
 		00C6F43C27F8BFCF00AD6246 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */; };
 		00C6F43E27F8C36F00AD6246 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */; };
 		00C7219027F1522F00B8CA4F /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */; };
@@ -110,6 +111,7 @@
 		0068E0E727E43DEB002307B3 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		006D538C280DF270000F7936 /* PostDatetimeCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatetimeCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		006D538E280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDatetimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		006D5390280E38E4000F7936 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		00C6F43D27F8C36F00AD6246 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		00C7218F27F1522E00B8CA4F /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				0068E0D127E2EBD4002307B3 /* Post.swift */,
 				00106F1B27E7E323005BE10A /* HomeFeedCellType.swift */,
 				00C6F43B27F8BFCF00AD6246 /* UserInfo.swift */,
+				006D5390280E38E4000F7936 /* SettingsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				006D538F280DF3A1000F7936 /* PostDatetimeCollectionViewCell.swift in Sources */,
 				00106F2F27E82418005BE10A /* PhotoCollectionViewCell.swift in Sources */,
 				0068E0E827E43DEC002307B3 /* PrivacyViewController.swift in Sources */,
+				006D5391280E38E7000F7936 /* SettingsModels.swift in Sources */,
 				00106F2527E80175005BE10A /* PostAuthorCollectionViewCell.swift in Sources */,
 				0068E0E627E43DD6002307B3 /* TermsViewController.swift in Sources */,
 				00106F0E27E7E026005BE10A /* PosterCollectionViewCellViewModel.swift in Sources */,
