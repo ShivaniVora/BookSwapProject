@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     private var observer: NSObjectProtocol?
     
+    private var allPosts: [(post: Post, owner: String)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
@@ -80,11 +82,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             defer {
                 userGroup.leave()
             }
+            
+            
             let users = emails + [email]
             
-            for current in emails {
+            for current in users {
                 userGroup.enter()
-                DatabaseManager.shared.posts(for: email) { result in
+                DatabaseManager.shared.posts(for: current) { result in
                     DispatchQueue.main.async {
                         defer {
                             userGroup.leave()
@@ -105,6 +109,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         userGroup.notify(queue: .main) {
             let group = DispatchGroup()
+            self.allPosts = allPosts
             allPosts.forEach { model in
                 group.enter()
                 self.createViewModel(model: model.post,
@@ -122,18 +127,30 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 )
             }
             group.notify(queue: .main) {
-                self.sortViewModels()
+                self.sortData()
                 self.collectionView?.reloadData()
             }
             
-            group.notify(queue: .main) {
+            /*group.notify(queue: .main) {
                 self.collectionView?.reloadData()
-            }
+            }*/
         }
     }
     
-    private func sortViewModels() {
-        self.viewModels = self.viewModels.sorted(by: { first, second in
+    private func sortData() {
+        allPosts = allPosts.sorted(by: { first, second in
+            let date1 = first.post.date
+            let date2 = second.post.date
+            
+            if let date1 = date1, let date2 = date2 {
+                return date1 > date2
+            }
+            
+            return false
+        })
+        
+        
+        viewModels = viewModels.sorted(by: { first, second in
             var date1: Date?
             var date2: Date?
             first.forEach { type in
@@ -272,9 +289,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 extension HomeViewController: PosterCollectionViewCellDelegate {
-    func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell) {
-        let vc = ProfileViewController(user: User(firstName: "Joe", lastName: "Smith", email: "joesmith@email.com"))
-        navigationController?.pushViewController(vc, animated: true)
+    func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell, index: Int) {
+        let email = allPosts[index].owner
+        DatabaseManager.shared.findUser(with: email) { [weak self] user in
+                    DispatchQueue.main.async {
+                        guard let user = user else {
+                            return
+                        }
+                        let vc = ProfileViewController(user: user)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+            }
     }
 }
 

@@ -8,11 +8,13 @@
 import UIKit
 
 protocol PosterCollectionViewCellDelegate: AnyObject {
-    func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell)
+    func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell, index: Int)
 }
 
 final class PosterCollectionViewCell: UICollectionViewCell {
     static let identifier = "PosterCollectionViewCell"
+    
+    private var index = 0
     
     weak var delegate: PosterCollectionViewCellDelegate?
     
@@ -37,7 +39,7 @@ final class PosterCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func didTapName() {
-        delegate?.posterCollectionViewCellDidTapName(self)
+        delegate?.posterCollectionViewCellDidTapName(self, index: index)
     }
     
     override func layoutSubviews() {

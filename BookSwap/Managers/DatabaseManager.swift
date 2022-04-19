@@ -57,7 +57,7 @@ final class DatabaseManager {
             
             completion(subset)
         }
-    }
+    }*/
      
      public func getPost(
              with identifer: String,
@@ -79,7 +79,7 @@ final class DatabaseManager {
              }
          }
      
-     */
+     
     
     
     public func posts(
