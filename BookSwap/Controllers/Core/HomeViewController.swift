@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             
             
-            let users = emails + [email]
+            let users = emails
             
             for current in users {
                 userGroup.enter()
@@ -107,24 +107,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
+        
         userGroup.notify(queue: .main) {
             let group = DispatchGroup()
             self.allPosts = allPosts
             allPosts.forEach { model in
                 group.enter()
-                self.createViewModel(model: model.post,
-                                     email: model.owner,
-                                     firstName: firstName,
-                                     lastName: lastName,
-                                     completion: { success in
-                                        defer {
-                                            group.leave()
-                                        }
-                                        if !success {
-                                            print("failed to create VM")
-                                        }
-                                    }
-                )
+                DatabaseManager.shared.returnFN(for: model.owner) { fn in
+                    DatabaseManager.shared.returnLN(for: model.owner) { ln in
+                        self.createViewModel(model: model.post,
+                                             email: model.owner,
+                                             firstName: fn,
+                                             lastName: ln,
+                                             completion: { success in
+                                                defer {
+                                                    group.leave()
+                                                }
+                                                if !success {
+                                                    print("failed to create VM")
+                                                }
+                                            })
+                    }
+                }
+                
             }
             group.notify(queue: .main) {
                 self.sortData()
@@ -199,7 +204,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             .schoolClass(viewModel: PostClassCollectionViewCellViewModel(schoolClass: model.schoolClass)),
             
-            .subject(viewModel: PostSubjectCollectionViewCellViewModel(subject: model.subject))
+            .subject(viewModel: PostSubjectCollectionViewCellViewModel(subject: model.subject)),
+            
+            .timestamp(viewModel: PostDatetimeCollectionViewCellViewModel(date: DateFormatter.formatter.date(from: model.postedDate) ?? Date()))
             
         ]
     
@@ -279,7 +286,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
             
         case .timestamp(let viewModel):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostDatetimeCollectionViewCell.identifer, for: indexPath) as? PostDatetimeCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostDatetimeCollectionViewCell.identifier, for: indexPath) as? PostDatetimeCollectionViewCell else {
                         fatalError()
                 }
             cell.configure(with: viewModel)
@@ -354,6 +361,8 @@ extension HomeViewController {
         collectionView.register(PostClassCollectionViewCell.self, forCellWithReuseIdentifier: PostClassCollectionViewCell.identifier)
         
         collectionView.register(PostSubjectCollectionViewCell.self, forCellWithReuseIdentifier: PostSubjectCollectionViewCell.identifier)
+        
+        collectionView.register(PostDatetimeCollectionViewCell.self, forCellWithReuseIdentifier: PostDatetimeCollectionViewCell.identifier)
         
         self.collectionView = collectionView
     }

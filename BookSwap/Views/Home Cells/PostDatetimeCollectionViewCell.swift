@@ -8,7 +8,7 @@
 import UIKit
 
 class PostDatetimeCollectionViewCell: UICollectionViewCell {
-    static let identifer = "PostDatetimeCollectionViewCell"
+    static let identifier = "PostDatetimeCollectionViewCell"
 
     private let label: UILabel = {
         let label = UILabel()

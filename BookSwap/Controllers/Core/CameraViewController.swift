@@ -44,7 +44,7 @@ class CameraViewController: UIViewController {
         checkCameraPermission()
         view.backgroundColor = .secondarySystemBackground
         shutterButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
-        photoPickerButton.addTarget(self, action: #selector(didTapTakePhoto), for: .touchUpInside)
+        photoPickerButton.addTarget(self, action: #selector(didTapPickPhoto), for: .touchUpInside)
     }
    
     override func viewDidAppear(_ animated: Bool) {

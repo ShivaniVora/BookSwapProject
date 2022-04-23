@@ -27,6 +27,28 @@ final class DatabaseManager {
         }
     }
     
+    public func returnFN(for email: String, completion: @escaping (String) -> Void) {
+        let ref = database.document("users/\(email)")
+        ref.getDocument { snapshot, error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            
+            completion(data["firstName"] as? String ?? "")
+        }
+    }
+    
+    public func returnLN(for email: String, completion: @escaping (String) -> Void) {
+        let ref = database.document("users/\(email)")
+        ref.getDocument { snapshot, error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            
+            completion(data["lastName"] as? String ?? "")
+        }
+    }
+    
     public func findUsers(with firstNamePrefix: String, completion: @escaping ([User]) -> Void) {
         let ref = database.collection("users")
         ref.getDocuments { snapshot, error in

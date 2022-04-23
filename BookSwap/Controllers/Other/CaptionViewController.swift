@@ -99,7 +99,7 @@ class CaptionViewController: UIViewController, UITextFieldDelegate {
         var schoolClass = classField.text ?? ""
         var subject = subjectField.text ?? ""
         
-        guard let newPostID = createNewPostID() else {
+        guard let newPostID = createNewPostID(), let stringDate = String.date(from: Date()) else {
             return
         }
         
@@ -109,7 +109,7 @@ class CaptionViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            let newPost = Post(id: newPostID, title: title, author: author, isbn: isbn, schoolClass: schoolClass, subject: subject, postURLString: url.absoluteString)
+            let newPost = Post(id: newPostID, title: title, author: author, isbn: isbn, schoolClass: schoolClass, subject: subject, postURLString: url.absoluteString, postedDate: stringDate)
             
             DatabaseManager.shared.createPost(newPost: newPost) { [weak self] finished in
                 guard finished else {

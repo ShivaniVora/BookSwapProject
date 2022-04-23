@@ -172,7 +172,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return cell
                 
             case .timestamp(let viewModel):
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostDatetimeCollectionViewCell.identifer, for: indexPath) as? PostDatetimeCollectionViewCell else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostDatetimeCollectionViewCell.identifier, for: indexPath) as? PostDatetimeCollectionViewCell else {
                             fatalError()
                     }
                 cell.configure(with: viewModel)

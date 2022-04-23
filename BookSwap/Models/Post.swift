@@ -15,10 +15,11 @@ struct Post: Codable {
     let schoolClass: String
     let subject: String
     let postURLString: String
+    let postedDate: String
     
     var date: Date? {
-        //return DateFormatter.formatter.date(from: date)
-        return Date()
+            guard let date = DateFormatter.formatter.date(from: postedDate) else { fatalError() }
+            return date
     }
     
     var storageReference: String? {
