@@ -76,8 +76,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var allPosts: [(post: Post, owner: String)] = []
         
-        //this not happy - ~1:00 in "Query for Feed"
-        //need to traverse through all users/some group of users other than following
+        
         DatabaseManager.shared.getAllUsers(for: email) { emails in
             defer {
                 userGroup.leave()
@@ -160,7 +159,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             var date2: Date?
             first.forEach { type in
                 switch type {
-                case .timestamp(let vm)://search query 1:00
+                case .timestamp(let vm):
                     date1 = vm.date
                 default:
                     break
@@ -168,7 +167,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             second.forEach { type in
                 switch type {
-                case .timestamp(let vm)://search query 1:00
+                case .timestamp(let vm):
                     date2 = vm.date
                 default:
                     break

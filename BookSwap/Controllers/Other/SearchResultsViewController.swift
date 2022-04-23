@@ -16,6 +16,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     public weak var delegate: SearchResultsViewControllerDelegate?
     
     private var users = [User]()
+    private var posts = [Post]()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -35,6 +36,12 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     
     public func update(with results: [User]) {
         self.users = results
+        tableView.reloadData()
+        tableView.isHidden = users.isEmpty
+    }
+    
+    public func update(with results: [Post]) {
+        self.posts = results
         tableView.reloadData()
         tableView.isHidden = users.isEmpty
     }

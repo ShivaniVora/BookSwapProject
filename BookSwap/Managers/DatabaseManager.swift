@@ -65,10 +65,12 @@ final class DatabaseManager {
         }
     }
     
-    /*public func findUserPosts(with titlePrefix: String, completion: @escaping ([User]) -> Void) {
+    //not functioning
+    //want to implement to be able to search posts by title at the very least
+    public func findUserPosts(with titlePrefix: String, completion: @escaping ([Post]) -> Void) {
         let ref = database.collection("users")
         ref.getDocuments { snapshot, error in
-            guard let users = snapshot?.documents.compactMap({ User(with: $0.data()) }), error == nil else {
+            guard let users = snapshot?.documents.compactMap({ Post(with: $0.data()) }), error == nil else {
                 completion([])
                 return
             }
@@ -79,7 +81,7 @@ final class DatabaseManager {
             
             completion(subset)
         }
-    }*/
+    }
      
      public func getPost(
              with identifer: String,
