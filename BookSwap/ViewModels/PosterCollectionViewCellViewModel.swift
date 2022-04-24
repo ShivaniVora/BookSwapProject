@@ -7,7 +7,13 @@
 
 import Foundation
 
+enum DeleteButtonUser {
+    case edit
+    case hidden
+}
+
 struct PosterCollectionViewCellViewModel {
     let firstName: String
     let lastName: String
+    let deleteButton: DeleteButtonUser
 }

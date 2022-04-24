@@ -15,7 +15,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private var collectionView: UICollectionView?
         
-    private var allPosts: [(post: Post, owner: String)] = []
+    private var allPosts: [(post: Post, owner: String, id: String)] = []
     
     private let owner: String
     private let firstN: String
@@ -84,7 +84,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         
             let postData: [HomeFeedCellType] = [
-                .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName)),
+                .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName, deleteButton: .edit)),
             
                 .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
                 
@@ -182,6 +182,28 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
 
 extension PostViewController: PosterCollectionViewCellDelegate {
+    func posterCollectionViewCellDidTapDelete(_ cell: PosterCollectionViewCell, index: Int) {
+            let sheet = UIAlertController(
+                title: "Are you sure?",
+                message: nil,
+                preferredStyle: .actionSheet
+            )
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] this in
+                
+                guard let id = self?.post.id, let email = self?.owner else {
+                    return
+                }
+                
+                DatabaseManager.shared.deletePost(for: id, email: email) { _ in
+                    
+                }
+             
+            }))
+            
+            present(sheet, animated: true)
+        }
+    
     func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell, index: Int) {
             DatabaseManager.shared.findUser(with: owner) { [weak self] user in
                 DispatchQueue.main.async {

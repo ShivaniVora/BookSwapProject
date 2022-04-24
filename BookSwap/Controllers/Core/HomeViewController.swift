@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     private var observer: NSObjectProtocol?
     
-    private var allPosts: [(post: Post, owner: String)] = []
+    private var allPosts: [(post: Post, owner: String, id: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +53,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
         
+        //code to show the users with posts that have a title that match the que
+        /*DatabaseManager.shared.findUserPosts(with: query) { results in
+            DispatchQueue.main.async {
+                resultsVC.update(with: results)
+            }
+        }*/
+        
+        
         DatabaseManager.shared.findUsers(with: query) { results in
             DispatchQueue.main.async {
                 resultsVC.update(with: results)
@@ -74,7 +82,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let userGroup = DispatchGroup()
         userGroup.enter()
         
-        var allPosts: [(post: Post, owner: String)] = []
+        var allPosts: [(post: Post, owner: String, id: String)] = []
         
         
         DatabaseManager.shared.getAllUsers(for: email) { emails in
@@ -95,7 +103,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         switch result {
                         case .success(let posts):
                             allPosts.append(contentsOf: posts.compactMap({
-                                (post: $0, owner: current)
+                                (post: $0, owner: current, id: $0.id)
                             }))
                             
                             
@@ -191,7 +199,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     
         let postData: [HomeFeedCellType] = [
-            .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName)),
+            .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName, deleteButton: .hidden)),
         
             .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
             
@@ -295,6 +303,27 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 extension HomeViewController: PosterCollectionViewCellDelegate {
+    func posterCollectionViewCellDidTapDelete(_ cell: PosterCollectionViewCell, index: Int) {
+            let sheet = UIAlertController(
+                title: "Are you sure?",
+                message: nil,
+                preferredStyle: .actionSheet
+            )
+            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] this in
+                guard let id = self?.allPosts[index].id, let email = self?.allPosts[index].owner else {
+                    return
+                }
+                
+                DatabaseManager.shared.deletePost(for: id, email: email) { _ in
+                    
+                }
+             
+            }))
+            
+            present(sheet, animated: true)
+        }
+    
     func posterCollectionViewCellDidTapName(_ cell: PosterCollectionViewCell, index: Int) {
         let email = allPosts[index].owner
         DatabaseManager.shared.findUser(with: email) { [weak self] user in

@@ -27,6 +27,12 @@ final class DatabaseManager {
         }
     }
     
+    public func deletePost(for id: String, email: String, completion: @escaping (Bool) -> Void){
+        let ref = database.collection("users").document(email).collection("posts").document(id).delete()
+            
+    }
+    
+    
     public func returnFN(for email: String, completion: @escaping (String) -> Void) {
         let ref = database.document("users/\(email)")
         ref.getDocument { snapshot, error in
@@ -67,19 +73,56 @@ final class DatabaseManager {
     
     //not functioning
     //want to implement to be able to search posts by title at the very least
-    public func findUserPosts(with titlePrefix: String, completion: @escaping ([Post]) -> Void) {
+    public func findUserPosts(with titlePrefix: String, completion: @escaping ([User]) -> Void) {
         let ref = database.collection("users")
+        
+        
+        
         ref.getDocuments { snapshot, error in
-            guard let users = snapshot?.documents.compactMap({ Post(with: $0.data()) }), error == nil else {
+            guard let users = snapshot?.documents.compactMap({ $0.documentID }), error == nil else {
                 completion([])
                 return
             }
             
-            let subset = users.filter({
-                $0.title.lowercased().hasPrefix(titlePrefix.lowercased())
-            })
             
-            completion(subset)
+            //allPosts should be collecting all of the posts available but it doesn't seem to be
+            var allPosts: [(post: Post, owner: String, id: String)] = []
+            
+            for current in users {
+                self.posts(for: current) { result in
+                            switch result {
+                            case .success(let posts):
+                                allPosts.append(contentsOf: posts.compactMap({
+                                    (post: $0, owner: current, id: $0.id)
+                                }))
+                                
+
+                            case .failure:
+                                break
+                            }
+                        }
+                    }
+            
+            var subset: [String] = []
+            
+            for post in allPosts {
+                if post.post.title.lowercased().hasPrefix(titlePrefix.lowercased()) {
+                    subset.append(post.owner)
+                }
+            }
+            
+            var results: [User] = []
+            
+            for email in subset {
+                self.findUser(with: email, completion: { user in
+                    guard let user = user else {
+                        return
+                    }
+                    results.append(user)
+                })
+            }
+            
+            completion(results)
         }
     }
      
