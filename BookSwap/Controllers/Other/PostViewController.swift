@@ -83,8 +83,16 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return
             }
         
+            let isUser: Bool = email.lowercased() == UserDefaults.standard.string(forKey: "email")?.lowercased() ?? ""
+            
+            var dbType: DeleteButtonUser = .hidden
+            
+            if isUser == true {
+                dbType = .edit
+            }
+            
             let postData: [HomeFeedCellType] = [
-                .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName, deleteButton: .edit)),
+                .poster(viewModel: PosterCollectionViewCellViewModel(firstName: firstName, lastName: lastName, deleteButton: dbType)),
             
                 .post(viewModel: PostCollectionViewCellViewModel(postUrl: postURL)),
                 
