@@ -54,18 +54,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         //code to show the users with posts that have a title that match the que
-        /*DatabaseManager.shared.findUserPosts(with: query) { results in
-            DispatchQueue.main.async {
-                resultsVC.update(with: results)
-            }
-        }*/
-        
-        
-        DatabaseManager.shared.findUsers(with: query) { results in
+        DatabaseManager.shared.findUserPosts(with: query, allP: allPosts) { results in
             DispatchQueue.main.async {
                 resultsVC.update(with: results)
             }
         }
+        
+        
+        /*DatabaseManager.shared.findUsers(with: query) { results in
+            DispatchQueue.main.async {
+                resultsVC.update(with: results)
+            }
+        }*/
     }
     
     private func fetchPosts() {
@@ -247,7 +247,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 fatalError()
             }
             cell.delegate = self
-            cell.configure(with: viewModel)
+            cell.configure(with: viewModel, indexP: indexPath.section)
             return cell
             
         case .post(let viewModel):

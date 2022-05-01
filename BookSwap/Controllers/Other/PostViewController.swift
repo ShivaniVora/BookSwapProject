@@ -134,7 +134,7 @@ class PostViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     fatalError()
                 }
                 cell.delegate = self
-                cell.configure(with: viewModel)
+                cell.configure(with: viewModel, indexP: indexPath.row)
                 return cell
                 
             case .post(let viewModel):

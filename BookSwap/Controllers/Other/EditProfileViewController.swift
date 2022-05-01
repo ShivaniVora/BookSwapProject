@@ -23,11 +23,8 @@ class EditProfileViewController: UIViewController {
         return field
     }()
     
-    let emailField: BATextField = {
-        let field = BATextField()
-        field.placeholder = "Email..."
-        return field
-    }()
+    var email: String = ""
+    
     
     let phoneField: BATextField = {
         let field = BATextField()
@@ -43,7 +40,7 @@ class EditProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(firstNameField)
         view.addSubview(lastNameField)
-        view.addSubview(emailField)
+        //view.addSubview(emailField)
         view.addSubview(phoneField)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
@@ -63,7 +60,7 @@ class EditProfileViewController: UIViewController {
                 self?.firstNameField.text = UserDefaults.standard.string(forKey: "firstName")
                 self?.lastNameField.text = UserDefaults.standard.string(forKey: "lastName")*/
                 if let user = user {
-                    self?.emailField.text = user.email
+                    self?.email = user.email
                     self?.firstNameField.text = user.firstName
                     self?.lastNameField.text = user.lastName
                 }
@@ -80,8 +77,8 @@ class EditProfileViewController: UIViewController {
         
         firstNameField.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: view.width-40, height: 50)
         lastNameField.frame = CGRect(x: 20, y: firstNameField.bottom + 10, width: view.width-40, height: 50)
-        emailField.frame = CGRect(x: 20, y: lastNameField.bottom + 10, width: view.width-40, height: 50)
-        phoneField.frame = CGRect(x: 20, y: emailField.bottom + 10, width: view.width-40, height: 50)
+        //emailField.frame = CGRect(x: 20, y: lastNameField.bottom + 10, width: view.width-40, height: 50)
+        phoneField.frame = CGRect(x: 20, y: lastNameField.bottom + 10, width: view.width-40, height: 50)
     }
     
     @objc func didTapClose() {
@@ -89,7 +86,7 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func didTapSave() {
-        let email = emailField.text ?? ""
+        let email = email
         let firstName = firstNameField.text ?? ""
         let lastName = lastNameField.text ?? ""
         let phone = phoneField.text ?? ""

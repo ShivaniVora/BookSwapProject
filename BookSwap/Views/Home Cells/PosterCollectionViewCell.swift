@@ -81,9 +81,11 @@ final class PosterCollectionViewCell: UICollectionViewCell {
         nameLabel.text = nil
     }
     
-    func configure(with viewModel: PosterCollectionViewCellViewModel) {
+    func configure(with viewModel: PosterCollectionViewCellViewModel, indexP: Int) {
         nameLabel.text = "\(viewModel.firstName) \(viewModel.lastName)"
-            
+        
+        index = indexP
+        
         switch viewModel.deleteButton {
         case .edit:
             deleteButton.isHidden = false

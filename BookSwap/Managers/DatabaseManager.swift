@@ -73,8 +73,8 @@ final class DatabaseManager {
     
     //not functioning
     //want to implement to be able to search posts by title at the very least
-    public func findUserPosts(with titlePrefix: String, completion: @escaping ([User]) -> Void) {
-        let ref = database.collection("users")
+    public func findUserPosts(with titlePrefix: String, allP: [(post: Post, owner: String, id: String)], completion: @escaping ([User]) -> Void) {
+        /*let ref = database.collection("users")
         
         
         
@@ -101,11 +101,11 @@ final class DatabaseManager {
                                 break
                             }
                         }
-                    }
+                    }*/
             
             var subset: [String] = []
             
-            for post in allPosts {
+            for post in allP {
                 if post.post.title.lowercased().hasPrefix(titlePrefix.lowercased()) {
                     subset.append(post.owner)
                 }
@@ -114,17 +114,17 @@ final class DatabaseManager {
             var results: [User] = []
             
             for email in subset {
-                self.findUser(with: email, completion: { user in
+                self.findUser(with: email) { user in
                     guard let user = user else {
                         return
                     }
-                    results.append(user)
-                })
+                    results.append(user)  //user object stores a user but the results array doesn't update
+                }
             }
             
             completion(results)
         }
-    }
+    
      
      public func getPost(
              with identifer: String,
